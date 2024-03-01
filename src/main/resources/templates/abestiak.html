@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link th:href="@{bootstrap.min.css}" rel="stylesheet"/>
+	    <title>Euskal Musika</title>
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<br/>
+			<h4>Abestien zerrenda</h4>
+			<br/>
+			<table class="table table-striped">
+			     <tr>
+			      	<th scope="col">Track</th>
+			     	<th scope="col">Izenburua</th>
+			     	<th scope="col">Iraupena</th>    
+			     	<th scope="col">Diska</th>    
+			    </tr>
+			    <tr th:each="abestia : ${abestiak}">
+			        <td scope="row" th:text="${abestia.ordena}"></td>
+			        <td scope="row" th:text="${abestia.izenburua}"></td>
+			        <td scope="row" th:text="${abestia.iraupena}"></td>
+			        <td scope="row" th:text="${abestia.diska?.izena}"></td>
+			        <td class="actions">
+						<a th:href="@{/abestiak/edit/{id}(id=${abestia.id})}" class="btn btn-primary">Editatu</a>   						
+						<a th:href="@{/abestiak/delete/{id}(id=${abestia.id})}" class="btn btn-danger">Ezabatu</a>   						
+					</td>
+				</tr>    
+			</table>	
+			<a th:href="@{/abestiak/new}" class="btn btn-success">Gehitu</a>   
+		</div>	
+		<div class="container">
+			<br/>
+			<br/>
+			<div th:replace="fragments/footer :: footer"></div> 
+		</div>	
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link th:href="@{bootstrap.min.css}" rel="stylesheet"/>
+	    <title>Euskal Musika</title>
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<br/>
+			<h4>Disken zerrenda</h4>
+			<br/>
+			<table class="table table-striped">
+			     <tr>
+			      	<th scope="col">Izena</th>
+			     	<th scope="col">Data</th>
+			     	<th scope="col">Artista</th>
+			      	<th scope="col">Disketxea</th>
+			    </tr>
+			    <tr th:each="diska : ${diskak}">
+			        <td scope="row" th:text="${diska.izena}"></td>
+			        <td scope="row" th:text="${diska.data}"></td>
+			        <td scope="row" th:text="${diska.artista}"></td>
+			        <td scope="row" th:text="${diska.disketxea}"></td>
+			        <td class="actions">
+						<a th:href="@{/diskak/edit/{id}(id=${diska.id})}" class="btn btn-primary">Editatu</a>   						
+						<a th:href="@{/diskak/delete/{id}(id=${diska.id})}" class="btn btn-danger">Ezabatu</a>
+					</td>
+			    </tr>    
+			</table>
+			<a th:href="@{/diskak/new}" class="btn btn-success">Gehitu</a>   
+		</div>		
+		<div class="container">
+			<br/>
+			<br/>
+			<div th:replace="fragments/footer :: footer"></div> 
+		</div>	  
+	</body>
+</html>

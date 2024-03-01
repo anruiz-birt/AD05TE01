@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link th:href="@{../bootstrap.min.css}" rel="stylesheet"/>
+	    <link th:href="@{../../bootstrap.min.css}" rel="stylesheet"/>
+	    <title>Euskal Musika</title>
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form method="post" action="#"th:action="@{/abestiak/new/submit}" th:object="${abestia}">
+				<br/>
+				<h4>
+			 		Abestia <span th:text="${id} ? 'editatu' : 'sortu'"></span>
+				</h4>
+				<br/>		  
+		  		<input type="hidden" th:field="*{id}" id="id" />
+		  		<div class="form-group">
+					<label for="trackInput">Track</label>
+					<input class="form-control" type="text"	placeholder="Sartu track zenbakia" th:field="*{ordena}"></input>
+		  		</div>				
+			   	<div class="form-group">
+			    	<label for="izenburuaInput">Izenburua</label>
+			    	<input class="form-control" type="text" placeholder="Sartu izenburua" th:field="*{izenburua}">
+			  	</div>  		
+			  	<div class="form-group">
+				    <label for="iraupenaInput">Iraupena</label>
+				    <input class="form-control" type="text" placeholder="Sartu iraupena" th:field="*{iraupena}">
+				</div>
+		    	<div class="form-group">
+		    		<label for="diska">Diska</label>
+		    		<select th:field="*{diska}" class="form-control">
+						<option value="-1">---</option>
+						<option th:each="diska : ${diskak}" th:value="${diska.id}" th:text="${diska.izena}">Diska</option>
+					</select>
+		  		</div>
+		  		<br/>
+		  		<button type="submit" class="btn btn-success">Gorde</button>
+			</form>
+		</div>
+		<div class="container">
+			<br/>
+			<br/>
+			<div th:replace="fragments/footer :: footer"></div> 
+		</div>	
+	</body>
+</html>

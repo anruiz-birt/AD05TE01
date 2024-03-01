@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Euskal Musika</title>
+        <link th:href="@{bootstrap.min.css}" rel="stylesheet"/>
+    </head>
+    <body>		
+			<div th:replace="fragments/header :: header"></div>	
+	        <div class="container">
+	            <div class="text-center mt-5">
+	                <h1>Euskal musikaren inguruko webgunea!</h1>
+	                <p class="lead">Entzun eta gozatu!</p>
+	            </div>
+	        </div>
+			<div class="container">
+				<br/>
+				<br/>
+				<div th:replace="fragments/footer :: footer"></div> 
+			</div>			
+    </body>
+</html>
